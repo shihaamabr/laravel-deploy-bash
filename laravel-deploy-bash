@@ -55,5 +55,15 @@ fi
 ######################################################
 SERVERS=$HOME/.config/laravel-deploy-bash/servers
 
+list_servers(){
+	SERVER_ARRAY=$($SERVERS)
+	echo ${SERVER_ARRAY[*]}
+}
 
+get_serveros(){
+	ssh ${SERVER[SELECT_SERVER]} -t uname -r
+
+}
+
+list_servers
 
