@@ -1,0 +1,59 @@
+#!/bin/bash
+
+cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1
+
+#Setting terminal output colors
+red=`tput setaf 1`
+#errorred=`tput setaf 196`
+#validgreen=`tput setaf 82`
+green=`tput setaf 46`
+brown=`tput setaf 3`
+blue=`tput setaf 4`
+pink=`tput setaf 5`
+cyan=`tput setaf 39`
+gray=`tput setaf 7`
+darkgray=`tput setaf 8`
+lightred=`tput setaf 9`
+lightgreen=`tput setaf 10`
+yellow=`tput setaf 11`
+reset=`tput sgr0`
+# Colors
+G='\e[01;32m'      # GREEN TEXT
+R='\e[01;31m'      # RED TEXT
+Y='\e[01;33m'      # YELLOW TEXT
+B='\e[01;34m'      # BLUE TEXT
+V='\e[01;35m'      # VIOLET TEXT
+Bl='\e[01;30m'     # BLACK TEXT
+C='\e[01;36m'      # CYAN TEXT
+W='\e[01;37m'      # WHITE TEXT
+BGBL='\e[1;30;47m' # Background W Text Bl
+N='\e[0m'          # How to use (example): echo "${G}example${N}"
+loadBar=' '        # Load UI
+
+display_banner(){
+        clear
+        echo "${pink}"
+	echo "Laravel Deploy"
+        echo "${reset}"
+}
+
+#####################################################
+initialize(){
+        echo initalizing..
+        mkdir -p $HOME/.config/laravel-deploy-bash/
+        mkdir -p $HOME/.cache/laravel-deploy-bash/
+	touch $HOME/.config/laravel-deploy-bash/config
+	touch $HOME/.config/laravel-deploy-bash/servers
+	touch $HOME/.config/laravel-deploy-bash/
+}
+
+CONFIG=$HOME/.config/laravel-deploy-bash/config
+if [ ! -f $CONFIG ]
+then
+       display_banner &&  initialize
+fi
+######################################################
+SERVERS=$HOME/.config/laravel-deploy-bash/servers
+
+
+
