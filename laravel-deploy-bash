@@ -152,7 +152,10 @@ read_add_new_server
 	if [ "$CHECKSSH" = "Authenticated"  ]
 	then
 		echo "Authentication Succfull"
-		echo $NEW_SERVER >> $SERVERS
+		echo "Detecting Server OS"
+		SERVEROS=$(ssh $NEW_SERVER -t cat /etc/*-release | grep DISTRIB_DESCRIPTION |cut --complement -d '"' -f 1  | cut -f1 -d '"')
+		SERVEROS=$(echo $SERVEROS | tail -n1)
+		echo $NEW_SERVER,$SERVEROS >> $SERVERS
 		echo ${green}$NEW_SERVER added! ${reset}
 		sleep 5
 		display_banner
